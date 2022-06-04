@@ -1,0 +1,58 @@
+<!-- <app-nav></app-nav> -->
+<div class="container-fluid bg-lgrey">
+  <div class="row row-height">
+    <div class="col-3 left pt-1 pb-2 d-none d-lg-block bg-lgrey">
+      <app-left-sidebar></app-left-sidebar>
+    </div>
+    <div class="col mid pt-1 pb-2 bg-lgrey" style="z-index: 10">
+      <!-- <app-card-preloader></app-card-preloader> -->
+      <!-- <div class="a-card-content pt-1 mb-2">
+        <p>What do you feel about this situation?</p>
+        <p>result from services:{{ getRes.emotion }}</p>
+      </div> -->
+      <!-- <app-add-post></app-add-post> -->
+      <!-- <app-drizzle></app-drizzle> -->
+      <!-- <app-cloudy></app-cloudy> -->
+      <!-- <div class="mb-5">
+        <app-card-result></app-card-result>
+      </div> -->
+      <!-- <div *ngIf="getRes.cargo.emoScape === 'drizzle'">
+        <app-drizzle></app-drizzle>
+      </div>
+      <div *ngIf="getRes.cargo.emoScape === 'thunder'">
+        <app-thunder></app-thunder>
+      </div>
+      <div *ngIf="getRes.cargo.emoScape === 'sunny'">
+        <app-sunny></app-sunny>
+      </div>
+      <div *ngIf="getRes.cargo.emoScape === 'cloudy'">
+        <app-cloudy></app-cloudy>
+      </div>
+      <div *ngIf="getRes.cargo.emoScape === 'harshwind'">
+        <app-harshwind></app-harshwind>
+      </div> -->
+      <div *ngIf="!getRes.cargo.time">
+        <p>Let start square</p>
+      </div>
+
+      <!-- <app-harshwind></app-harshwind> -->
+      <!-- <app-sunny></app-sunny> -->
+      <!-- <hr /> -->
+      <!-- <app-map-card></app-map-card> -->
+      <!-- <hr /> -->
+      <!-- <app-sit-scroll-cards></app-sit-scroll-cards>
+      <hr /> -->
+
+      <div
+        class="py-5 d-block d-lg-none"
+        style="padding-top: 0rem !important"
+      ></div>
+    </div>
+    <div class="col-2 right pt-1 pb-2 mb-3 bg-lgrey d-none d-lg-block">
+      <div class="a-card-content"><p>information block</p></div>
+      <div class="a-card-content mt-3">
+        <app-right-sidebar></app-right-sidebar>
+      </div>
+    </div>
+  </div>
+</div>

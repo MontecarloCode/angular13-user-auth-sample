@@ -1,0 +1,217 @@
+$border-radius: 8px;
+.widget {
+  position: relative;
+
+  display: flex;
+  height: 300px;
+  width: 100%;
+
+  flex-wrap: wrap;
+  border-radius: $border-radius;
+  box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3),
+    0 17px 17px 0 rgba(0, 0, 0, 0.15);
+  // background: #fafafa;
+  // thunder
+  background: white;
+
+  .weatherIcon {
+    flex: 1 100%;
+    height: 60%;
+    // border-top-left-radius: $border-radius;
+    // border-top-right-radius: $border-radius;
+
+    // font-family: weathericons;
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-around;
+    // font-size: 100px;
+    // overflow: hidden;
+    // position: relative;
+
+    i {
+      padding-top: 30px;
+    }
+  }
+
+  .weatherInfo {
+    // mix-blend-mode: difference;
+    flex: 0 0 70%;
+    height: 40%;
+    // background: #080705;
+    // border-bottom-left-radius: $border-radius;
+    display: flex;
+    align-items: center;
+    // color: white;
+
+    .temperature {
+      // mix-blend-mode: difference;
+      // background: #70c1b3;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+      animation-name: placeHolderShimmer;
+      animation-timing-function: linear;
+      background: #f6f7f8;
+      background-image: -webkit-gradient(
+        linear,
+        left center,
+        right center,
+        from(#f6f7f8),
+        color-stop(0.2, #edeef1),
+        color-stop(0.4, #f6f7f8),
+        to(#f6f7f8)
+      );
+      background-image: -webkit-linear-gradient(
+        left,
+        #f6f7f8 0%,
+        #edeef1 20%,
+        #f6f7f8 40%,
+        #f6f7f8 100%
+      );
+      background-repeat: no-repeat;
+      background-size: 800px 100%;
+      flex: 0 0 40%;
+      width: 90%;
+      // width: 2px;
+      // content: "";
+      min-height: 2em;
+      // font-size: 2em !important;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .description {
+      // mix-blend-mode: difference;
+      flex: 0 60%;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+
+      .weatherCondition {
+        // mix-blend-mode: difference;
+        // background: #70c1b3;
+        // text-transform: uppercase;
+        // font-size: 35px;
+        // font-weight: 100;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+        animation-name: placeHolderShimmer;
+        animation-timing-function: linear;
+        background: #f6f7f8;
+        background-image: -webkit-gradient(
+          linear,
+          left center,
+          right center,
+          from(#f6f7f8),
+          color-stop(0.2, #edeef1),
+          color-stop(0.4, #f6f7f8),
+          to(#f6f7f8)
+        );
+        background-image: -webkit-linear-gradient(
+          left,
+          #f6f7f8 0%,
+          #edeef1 20%,
+          #f6f7f8 40%,
+          #f6f7f8 100%
+        );
+        background-repeat: no-repeat;
+        background-size: 800px 100%;
+        width: 90%;
+        min-height: 3em;
+      }
+
+      .place {
+        // font-size: 15px;
+        // background: #70c1b3;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+        animation-name: placeHolderShimmer;
+        animation-timing-function: linear;
+        background: #f6f7f8;
+        background-image: -webkit-gradient(
+          linear,
+          left center,
+          right center,
+          from(#f6f7f8),
+          color-stop(0.2, #edeef1),
+          color-stop(0.4, #f6f7f8),
+          to(#f6f7f8)
+        );
+        background-image: -webkit-linear-gradient(
+          left,
+          #f6f7f8 0%,
+          #edeef1 20%,
+          #f6f7f8 40%,
+          #f6f7f8 100%
+        );
+        background-repeat: no-repeat;
+        background-size: 800px 100%;
+        width: 70%;
+        min-height: 1em;
+      }
+    }
+  }
+
+  .note {
+    flex: 0 0 30%;
+    // background: #70c1b3;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: #f6f7f8;
+    background-image: -webkit-gradient(
+      linear,
+      left center,
+      right center,
+      from(#f6f7f8),
+      color-stop(0.2, #edeef1),
+      color-stop(0.4, #f6f7f8),
+      to(#f6f7f8)
+    );
+    background-image: -webkit-linear-gradient(
+      left,
+      #f6f7f8 0%,
+      #edeef1 20%,
+      #f6f7f8 40%,
+      #f6f7f8 100%
+    );
+    background-repeat: no-repeat;
+    background-size: 800px 100%;
+    border-bottom-right-radius: $border-radius;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    min-height: 4em;
+    z-index: 1;
+
+    .placeText {
+      font-size: 15px;
+    }
+  }
+}
+
+p {
+  position: fixed;
+  bottom: 0%;
+  right: 2%;
+  a {
+    text-decoration: none;
+    color: #e4d6a7;
+    font-size: 10px;
+  }
+}
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+/*конец*/

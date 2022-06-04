@@ -1,0 +1,259 @@
+<div class="container">
+  <div class="row vh-100">
+    <!-- <div class="col-md-3">
+      <img
+        [src]="user.imageURL"
+        width="150px"
+        height="150px"
+        class="rounded-circle"
+        alt="{{ user.firstName }} {{ user.familyName }} is profile picture"
+      />
+      <button
+        type="button"
+        class="btn btn-outline-danger"
+        (click)="goToEditUserProfile()"
+      >
+        Update profile
+      </button>
+    </div> -->
+    <!-- <div class="col-md-9">
+      <h6 *ngIf="user.firstName">
+        <span style="color: red"
+          >{{ user.firstName }} {{ user.familyName }}</span
+        >
+      </h6>
+      <h6 *ngIf="!user.firstName" style="color: red">
+        У тебя не заполнен профиль
+      </h6>
+      <h6>
+        nickName: <span style="color: red">{{ this.user.nickName }}</span>
+      </h6>
+      <h5>
+        aliasUrl: <span style="color: red"> {{ this.user.aliasUrl }}</span>
+      </h5>
+      <h5>
+        <i class="fas fa-envelope"></i>
+        <span style="color: red"> {{ user.email }}</span>
+      </h5>
+      <h5>
+        Sign up in :<span style="color: red">
+          {{ +user.created_at | date: "mediumDate" }}</span
+        >
+      </h5>
+      <h5>
+        Role :<span style="color: red"> {{ user.role }}</span>
+      </h5>
+      <h5>
+        Last session :<span style="color: red">
+          {{ +user.lastSession | date: "full" }}</span
+        >
+      </h5>
+    </div> -->
+    <div class="col-md-4">
+      <div class="img-container mb-3">
+        <img
+          [src]="user.imageURL"
+          width="150px"
+          height="150px"
+          class="rounded-circle"
+          (click)="goToEditUserProfile()"
+        />
+      </div>
+      <button
+        type="button"
+        class="btn btn-outline-danger mb-3"
+        (click)="goToEditUserProfile()"
+      >
+        Update profile
+      </button>
+      <!-- <p
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseExample"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        Button with data-bs-target
+      </p>
+      <div class="collapse" id="collapseExample">
+        Some placeholder content for the collapse component. This panel is
+        hidden by default but revealed when the user activates the relevant
+        trigger.
+      </div> -->
+    </div>
+    <div class="col-md-8">
+      <div class="row mb-3">
+        <h6>Full name</h6>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="What do your family members call you?"
+            (click)="goToEditUserProfile()"
+            required
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <h6>Preferred name</h6>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="For example, when your relatives are looking for you"
+            (click)="goToEditUserProfile()"
+            required
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <h6>whicn of the following most accurately describe(s) you?</h6>
+        <div class="row mb-3">
+          <div class="col-4">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                (click)="goToEditUserProfile()"
+              />
+              <label class="form-check-label" for="flexRadioDefault1">
+                Female
+              </label>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                (click)="goToEditUserProfile()"
+              />
+              <label class="form-check-label" for="flexRadioDefault1">
+                Male
+              </label>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                (click)="goToEditUserProfile()"
+              />
+              <label class="form-check-label" for="flexRadioDefault2">
+                Non-binary
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-4">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                (click)="goToEditUserProfile()"
+              />
+              <label class="form-check-label" for="flexRadioDefault2">
+                Transgender
+              </label>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                (click)="goToEditUserProfile()"
+              />
+              <label class="form-check-label" for="flexRadioDefault2">
+                Intersex
+              </label>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                (click)="goToEditUserProfile()"
+              />
+              <label class="form-check-label" for="flexRadioDefault2">
+                Prefer not to say
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <h6>What is your date of birth?</h6>
+        <div class="col-4">
+          <label>Year</label>
+          <select class="form-select" (click)="goToEditUserProfile()"></select>
+        </div>
+
+        <div class="col-4">
+          <label>Month</label>
+          <select class="form-select" (click)="goToEditUserProfile()"></select>
+        </div>
+
+        <div class="col-4">
+          <label>Day</label>
+          <select class="form-select" (click)="goToEditUserProfile()"></select>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col">
+          <input
+            type="text"
+            [disabled]="true"
+            class="form-control"
+            placeholder="{{ user.email }}"
+            (click)="goToEditUserProfile()"
+          />
+        </div>
+      </div>
+      <!-- <div class="row">
+        <div class="col-auto me-auto">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            (click)="goToEditUserProfile()"
+          >
+            Update
+          </button>
+        </div>
+      </div> -->
+      <!-- <p>
+        <a
+          class="btn btn-primary"
+          data-bs-toggle="collapse"
+          href="#collapseExample"
+          role="button"
+          aria-expanded="false"
+          aria-controls="collapseExample"
+        >
+          Link with href
+        </a>
+        <button
+          class="btn btn-primary"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseExample"
+          aria-expanded="false"
+          aria-controls="collapseExample"
+        >
+          Button with data-bs-target
+        </button>
+      </p> -->
+      <!-- <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          Some placeholder content for the collapse component. This panel is
+          hidden by default but revealed when the user activates the relevant
+          trigger.
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+<!--  -->

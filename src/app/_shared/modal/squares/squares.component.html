@@ -1,0 +1,62 @@
+<div
+  class="
+    container-fluid
+    h-100
+    d-flex
+    flex-column
+    justify-content-center
+    container-menu
+  "
+>
+  <div class="row justify-content-center">
+    <div class="body-box">
+      <h4 class="pt-3 col-12 text-center">
+        CHOOSE <b>{{ remainderColors }}</b> COLORS
+      </h4>
+      <!-- <div
+        (click)="close.emit(); appTimerDelayServices.removeButton()"
+        class="sq-0"
+      ></div>
+      <div
+        (click)="close.emit(); appTimerDelayServices.removeButton()"
+        class="sq-1"
+      ></div>
+      <div
+        (click)="close.emit(); appTimerDelayServices.removeButton()"
+        class="sq-2"
+      ></div>
+      <div
+        (click)="close.emit(); appTimerDelayServices.removeButton()"
+        class="sq-3"
+      ></div>
+      <div
+        (click)="close.emit(); appTimerDelayServices.removeButton()"
+        class="sq-4"
+      ></div>
+      <div
+        (click)="close.emit(); appTimerDelayServices.removeButton()"
+        class="sq-5"
+      ></div>
+      <div
+        (click)="close.emit(); appTimerDelayServices.removeButton()"
+        class="sq-6"
+      ></div>
+      <div
+        (click)="close.emit(); appTimerDelayServices.removeButton()"
+        class="sq-7"
+      ></div>
+      <div
+        (click)="close.emit(); appTimerDelayServices.removeButton()"
+        class="sq-8"
+      ></div> -->
+      <div
+        *ngFor="let item of squers"
+        class="{{ item.color }}"
+        (click)="!item.enable || results(item)"
+      ></div>
+    </div>
+    <div class="col-12 text-center pt-3">
+      <h4>CONSISTENTLY</h4>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,393 @@
+<div class="d-none d-lg-block">
+  <nav
+    class="navbar navbar-light navbar-expand-md bg-light justify-content-center"
+  >
+    <!-- <app-squares
+      *ngIf="modalSquares"
+      (close)="modalSquares = false"
+    ></app-squares> -->
+    <!-- <a href="/" class="navbar-brand mr-0">test</a> -->
+    <a class="navbar-brand mr-0" [routerLink]="['/']">
+      <div class="container-fluid">
+        <img
+          src="../../../../assets/serv_img/logo-alfauser.png"
+          alt="Allfauser"
+          height="32"
+        />
+      </div>
+    </a>
+
+    <div
+      class="navbar-collapse collapse justify-content-between align-items-center w-100"
+      id="collapsingNavbar2"
+    >
+      <ul class="nav navbar-nav mx-auto text-center">
+        <li>
+          <button
+            class="btn btn-circle btn-circle-sm-center mx-3"
+            [routerLink]="['/']"
+          >
+            <i class="fas fa-home"></i>
+          </button>
+        </li>
+
+        <!-- <li>
+          <button
+            class="btn btn-circle btn-circle-sm-center m-2"
+            style="border: 1px solid #3b5998"
+          >
+            <span
+              style="
+                font-weight: 500;
+                line-height: 1.2;
+                /* width: 34px; */
+
+                display: block;
+
+                font-size: 1rem;
+                color: #8b9dc3;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+              >120</span
+            >
+          </button>
+        </li> -->
+        <li>
+          <!-- <button
+            *ngIf="appTimerDelayServices.viewButton"
+            class="btn-xl px-4"
+            (click)="modalSquares = true"
+          >
+            <i class="ico-btn fas fa-th"></i>
+          </button> -->
+          <!-- <div *ngIf="appTimerDelayServices.viewButton"> -->
+          <button
+            *ngIf="appTimerDelayServices.viewButton"
+            (click)="sq1()"
+            class="btn btn-circle btn-circle-sm-center mx-3"
+            style="padding-left: 2px !important; padding-right: 2px !important"
+          >
+            <svg
+              id="_9menu"
+              data-name="9menu"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20.086 20.086"
+            >
+              <defs>
+                <style>
+                  .cls-1 {
+                    fill: #fff;
+                  }
+                </style>
+              </defs>
+
+              <path
+                id="blackcircle8"
+                d="M2.926,14.234A2.926,2.926,0,1,0,5.852,17.16,2.926,2.926,0,0,0,2.926,14.234Z"
+                transform="translate(0 0)"
+              />
+              <path
+                id="whitecircle8"
+                class="cls-1"
+                d="M2.927,18.194h0A1.034,1.034,0,1,1,3.961,17.16,1.034,1.034,0,0,1,2.926,18.194Z"
+                transform="translate(0 0)"
+              />
+              <path
+                id="blackcircle7"
+                d="M9.625,7.113a2.926,2.926,0,1,0,2.926,2.926A2.926,2.926,0,0,0,9.625,7.113Z"
+                transform="translate(0 0)"
+              />
+              <path
+                id="whitecircle7"
+                class="cls-1"
+                d="M9.626,11.073h0a1.034,1.034,0,1,1,1.035-1.034A1.034,1.034,0,0,1,9.625,11.073Z"
+                transform="translate(0 0)"
+              />
+              <path
+                id="blackcircle6"
+                d="M16.323,7.113a2.926,2.926,0,1,0,2.926,2.926A2.926,2.926,0,0,0,16.323,7.113Z"
+                transform="translate(0 0)"
+              />
+              <path
+                id="whitecircle6"
+                class="cls-1"
+                d="M16.325,11.073h0a1.034,1.034,0,1,1,1.04-1.03A1.034,1.034,0,0,1,16.323,11.073Z"
+                transform="translate(0 0)"
+              />
+              <path
+                id="blackcircle5"
+                d="M9.625,0a2.926,2.926,0,1,0,2.926,2.926A2.926,2.926,0,0,0,9.625,0Z"
+                transform="translate(0 0)"
+              />
+              <path
+                id="whitecircle5"
+                class="cls-1"
+                d="M9.626,3.96h0A1.034,1.034,0,1,1,10.66,2.926,1.034,1.034,0,0,1,9.625,3.96Z"
+                transform="translate(0 0)"
+              />
+              <path
+                id="blackcircle4"
+                d="M2.921,8.416a1.627,1.627,0,1,0,1.627,1.627A1.626,1.626,0,0,0,2.921,8.416Z"
+                transform="translate(0 0)"
+              />
+              <path
+                id="whitecircle4"
+                class="cls-1"
+                d="M2.922,10.618h0a.575.575,0,1,1,.575-.575A.574.574,0,0,1,2.921,10.618Z"
+                transform="translate(0 0)"
+              />
+              <path
+                id="blackcircle4-2"
+                data-name="blackcircle4"
+                d="M9.625,15.533a1.627,1.627,0,1,0,1.626,1.627A1.626,1.626,0,0,0,9.625,15.533Z"
+                transform="translate(0 0)"
+              />
+              <path
+                id="whitecircle3"
+                class="cls-1"
+                d="M9.625,17.735h0a.575.575,0,1,1,.575-.575A.575.575,0,0,1,9.625,17.735Z"
+                transform="translate(0 0)"
+              />
+              <path
+                id="blackcircle3"
+                d="M16.329,15.533a1.627,1.627,0,1,0,1.627,1.627A1.626,1.626,0,0,0,16.329,15.533Z"
+                transform="translate(0 0)"
+              />
+              <path
+                id="whitecircle2"
+                class="cls-1"
+                d="M16.33,17.735h0a.575.575,0,1,1,.575-.575A.574.574,0,0,1,16.329,17.735Z"
+                transform="translate(0 0)"
+              />
+              <path
+                id="blackcircle2"
+                d="M16.329,1.3a1.627,1.627,0,1,0,1.627,1.627A1.626,1.626,0,0,0,16.329,1.3Z"
+                transform="translate(0 0)"
+              />
+              <path
+                id="whitecircle2-2"
+                data-name="whitecircle2"
+                class="cls-1"
+                d="M16.33,3.5h0a.575.575,0,1,1,.575-.575A.574.574,0,0,1,16.329,3.5Z"
+                transform="translate(0 0)"
+              />
+              <path
+                id="blackcircle1"
+                d="M2.921,1.3A1.627,1.627,0,1,0,4.548,2.926,1.626,1.626,0,0,0,2.921,1.3Z"
+                transform="translate(0 0)"
+              />
+              <path
+                id="whitecircle1"
+                class="cls-1"
+                d="M2.922,3.5h0A.575.575,0,1,1,3.5,2.926.574.574,0,0,1,2.921,3.5Z"
+                transform="translate(0 0)"
+              />
+            </svg>
+            <!-- partial -->
+          </button>
+          <!-- </div> -->
+          <!-- <div *ngIf="!appTimerDelayServices.viewButton"> -->
+          <button
+            *ngIf="!appTimerDelayServices.viewButton"
+            class="btn btn-circle btn-circle-sm-center mx-2"
+            style="border: 1px solid #3b5998"
+          >
+            <span
+              style="
+                font-weight: 500;
+                line-height: 1.2;
+                /* width: 34px; */
+
+                display: block;
+
+                font-size: 1rem;
+                color: #8b9dc3;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+              >{{ appTimerDelayServices.timeS }}</span
+            >
+          </button>
+
+          <!-- </div> -->
+          <!-- <button
+            *ngIf="appTimerDelayServices.viewButton"
+            (click)="sq1()"
+            class="btn-xl px-4"
+          >
+            <i class="ico-btn fas fa-th"></i>
+          </button> -->
+        </li>
+        <li>
+          <!-- <button class="btn-xl px-4" (click)="btnView()"> -->
+          <button
+            class="btn btn-circle btn-circle-sm-center mx-3"
+            routerLink="/profile"
+          >
+            <!-- <i class="ico-btn fas fa-users"></i> -->
+            <i class="ico-btn fas fa-user-circle"></i>
+          </button>
+        </li>
+
+        <!-- <li>
+                    <button class="btn-xl px-4">
+                        <i class="fas fa-sync"></i>
+                    </button>
+                </li> -->
+      </ul>
+      <!-- <ul class="nav navbar-nav mx-auto text-center">
+                <li class="nav-item active">
+                    <i class="fas fa-home light-jeans fa-2x m-3"></i>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-th light-jeans fa-2x m-3"></i>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-users light-jeans fa-2x m-3"></i>
+
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-people-arrows light-jeans fa-2x m-3"></i>
+
+                </li>
+
+            </ul> -->
+      <ul class="nav navbar-nav">
+        <li>
+          <button
+            class="btn btn-circle btn-circle-sm m-2"
+            routerLink="/about/faq"
+          >
+            <i class="fas fa-question light-jeans"></i>
+            <!-- <span class="badge"> <i class="fas fa-exclamation"></i></span> -->
+          </button>
+        </li>
+        <!-- <li>
+          <button class="btn btn-circle btn-circle-sm m-2">
+            <i class="far fa-comment-alt light-jeans"></i>
+            <span class="badge">17</span>
+          </button>
+        </li> -->
+        <li>
+          <!-- <button
+            class="btn btn-circle btn-circle-sm m-2"
+            (click)="authService.SignOut()"
+          >
+            <i class="fas fa-sign-out-alt light-jeans"></i>
+          </button> -->
+          <button class="btn btn-circle btn-circle-sm m-2" (click)="logOut()">
+            <i class="fas fa-sign-out-alt light-jeans"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<!-- мой диз -->
+
+<div class="d-block d-lg-none">
+  <nav class="navbar fixed-bottom navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="d-flex flex-grow-1">
+        <span class="w-100 d-lg-none d-block">
+          <!-- hidden spacer to center brand on mobile -->
+        </span>
+        <ul class="nav navbar-nav flex-row justify-content-center flex-nowrap">
+          <li>
+            <button class="btn btn-circle btn-circle-mob m-2">
+              <i class="far fa-comment-alt light-jeans"></i>
+              <span class="badge-left-bar"></span>
+            </button>
+          </li>
+          <li>
+            <button class="btn btn-circle btn-circle-mob m-2">
+              <i class="fas fa-users light-jeans"></i>
+            </button>
+          </li>
+          <li>
+            <button
+              *ngIf="appTimerDelayServices.viewButton"
+              class="btn btn-circle btn-circle-mob m-2"
+              (click)="modalSquares = true"
+            >
+              <i class="fas fa-th light-jeans"></i>
+            </button>
+            <!-- <button class="btn btn-circle btn-circle-mob m-2">
+              <i class="fas fa-th light-jeans"></i>
+            </button> -->
+          </li>
+          <li>
+            <button
+              class="btn btn-circle btn-circle-mob m-2"
+              [routerLink]="['/']"
+            >
+              <i class="fas fa-home light-jeans"></i>
+            </button>
+          </li>
+        </ul>
+        <!-- <a href="#" class=" text-decoration-none fa-lg  p-4">
+                    <i class="far fa-comment-alt light-jeans"></i>
+                    <span class="badge-left-bar"></span>
+                </a>
+                <a href="#" class=" text-decoration-none fa-lg  p-4">
+                    <i class="fas fa-users light-jeans"></i>
+                </a>
+                <a href="#" class=" text-decoration-none fa-lg  p-4">
+                    <i class="fas fa-th light-jeans"></i>
+                </a>
+                <a href="#" class=" text-decoration-none fa-lg  p-4">
+                    <i class="fas fa-home light-jeans"></i>
+                </a> -->
+        <!-- <app-squares
+          *ngIf="modalSquares"
+          (close)="modalSquares = false"
+        ></app-squares> -->
+        <!-- <app-mob-menu-to-up
+          *ngIf="modal"
+          (close)="modal = false"
+        ></app-mob-menu-to-up> -->
+        <div class="w-100 text-right">
+          <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNavbar7">
+					<span class="navbar-toggler-icon"></span>
+				</button> -->
+        </div>
+      </div>
+      <ul class="nav navbar-nav">
+        <li>
+          <!-- <button class="btn btn-circle btn-circle-mob" (click)="modal = true">
+            <i class="fas fa-bars light-jeans"></i>
+            <span class="badge-left-bar"></span>
+          </button> -->
+          <button class="btn btn-circle btn-circle-mob">
+            <i class="fas fa-bars light-jeans"></i>
+            <span class="badge-left-bar"></span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<!-- <nav class="navbar fixed-bottom navbar-light d-block d-lg-none">
+
+
+    <div class="ms-auto">
+        <a href="#" class=" text-decoration-none fa-2x m-2">
+            <i class="fas fa-th light-jeans"></i>
+        </a>
+        <a href="#" class=" text-decoration-none fa-2x m-2">
+            <i class="fas fa-th light-jeans"></i>
+        </a>
+        <a href="#" class=" text-decoration-none fa-2x m-2">
+            <i class="fas fa-th light-jeans"></i>
+        </a>
+        <a href="#" class=" text-decoration-none fa-2x m-2">
+            <i class="fas fa-th light-jeans"></i>
+        </a>
+    </div>
+
+
+</nav> -->

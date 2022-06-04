@@ -1,0 +1,8 @@
+<li>
+    <a
+      routerLink="forgot-password"
+      [skipLocationChange]="true"
+      class="nav-item nav-link"
+      >forgot-password</a
+    >
+  </li>

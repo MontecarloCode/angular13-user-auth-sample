@@ -1,0 +1,202 @@
+<!-- <div
+  class="container-fluid"
+  style="min-height: 100vh; background-color: #efefef; padding: 50px 11px"
+>
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+    class="form facebook-style"
+  >
+    <h2 style="width: fit-content; margin: 0 auto 50px auto">Welcome back</h2>
+    <div>
+      <label for="email">Email</label> <br />
+      <input
+        formControlName="email"
+        type="email"
+        placeholder="Email"
+        class="form-control"
+      />
+    </div>
+    <div>
+      <label for="password">Password</label> <br />
+      <input
+        autocomplete="off"
+        formControlName="password"
+        type="password"
+        placeholder="Password"
+        class="form-control"
+      />
+    </div>
+    <div *ngIf="firebaseErrorMessage != ''" class="error-style">
+      <span>{{ firebaseErrorMessage }}</span>
+    </div>
+    <div>
+      <button class="btn btn-primary" style="width: 100%">Continue</button>
+    </div>
+    <div>
+      <a id="forgotPSW-link" routerLink="/forgot-password">Forgot password?</a>
+    </div>
+    <hr />
+    <br />
+    <div class="noAccount">
+      <p style="text-align: center">OR</p>
+      <button class="btn btn-success" routerLink="/signup">
+        Create new account
+      </button>
+    </div>
+  </form>
+</div> -->
+<div class="container">
+  <div class="row align-items-center justify-content-center vh-100">
+    <div class="col-md-7">
+      <img src="../../assets/serv_img/logo-alfauser.png" class="w-50" />
+      <!-- <h3 class="pt-3">
+        helps you get to know yourself and your family better in order to
+        maintain a favorable psychological comfort
+      </h3> -->
+      <h3 class="pt-3">
+        become your own therapist in everyday situations and a leader in your
+        community
+      </h3>
+      <figure>
+        <blockquote class="blockquote">
+          <p>Fortunate, who was able to know the causes of things</p>
+          <figcaption class="blockquote-footer">Virgil</figcaption>
+        </blockquote>
+      </figure>
+    </div>
+    <div class="col-md-5">
+      <div class="a-card">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <!-- Error -->
+          <div *ngIf="firebaseErrorMessage" class="valid-feedback d-block text-danger">
+            <p>
+              <i
+                class="fa fa-exclamation-triangle text-danger"
+                aria-hidden="true"
+              ></i>
+              {{firebaseErrorMessage}}
+            </p>
+          </div>
+          <!-- Email -->
+          <div class="form-group mb-3">
+            <label for="email">Email</label> <br />
+            <input
+              formControlName="email"
+              type="email"
+              class="form-control"
+              [ngClass]="{
+                'is-valid':
+                  loginForm.get('email').touched &&
+                  loginForm.get('email').valid,
+                'is-invalid':
+                  loginForm.get('email').touched &&
+                  loginForm.get('email').invalid
+              }"
+            />
+            <!-- <pre>{{ signupForm.get("email").valid | json }}</pre> -->
+            <div
+              *ngIf="
+                loginForm.get('email').invalid && loginForm.get('email').touched
+              "
+            >
+              <div class="invalid-feedback d-block">
+                <p>
+                  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                  Email wrong please correct
+                </p>
+              </div>
+            </div>
+            <div
+              *ngIf="
+                loginForm.get('email').valid && loginForm.get('email').touched
+              "
+            >
+              <!-- <div class="valid-feedback d-block" style="color: green">
+                <p>
+                  <i
+                    class="fa fa-exclamation-triangle text-warning"
+                    aria-hidden="true"
+                  ></i>
+                  We will email you a confirmation
+                </p>
+              </div> -->
+            </div>
+          </div>
+          <!-- Password -->
+          <div class="form-group mb-3">
+            <label for="password">Password</label> <br />
+            <input
+              formControlName="password"
+              type="password"
+              class="form-control"
+              [ngClass]="{
+                'is-valid':
+                  loginForm.get('password').touched &&
+                  loginForm.get('password').valid,
+                'is-invalid':
+                  loginForm.get('password').touched &&
+                  loginForm.get('password').invalid
+              }"
+            />
+            <!-- <pre>{{ signupForm.get("password").valid | json }}</pre> -->
+            <div
+              *ngIf="
+                loginForm.get('password').invalid &&
+                loginForm.get('password').touched
+              "
+            >
+              <div class="invalid-feedback d-block" style="color: #d43f3a">
+                <p *ngIf="loginForm.get('password').errors?.['required']">
+                  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                  The field must not be empty
+                </p>
+
+                <small *ngIf="loginForm.get('password').errors?.['minlength']">
+                  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                  Password must be at least
+                  {{ loginForm.get("password").errors?.['minlength']?.['requiredLength'] }}
+                  characters. Сurrent number of characters
+                  {{ loginForm.get("password").errors?.['minlength']?.['actualLength'] }}
+                </small>
+              </div>
+            </div>
+          </div>
+
+          <div class="pb-3">
+            <button
+              class="btn btn-primary"
+              [ngClass]="{
+                disabled: loginForm.invalid
+              }"
+              style="width: 100%"
+            >
+              Continue
+            </button>
+          </div>
+          <div class="noAccount pb-3">
+            <a routerLink="/forgot-password">Forgot password?</a>
+          </div>
+          <hr />
+
+          <div class="pb-3">
+            <button
+              class="btn btn-success"
+              style="width: 100%"
+              routerLink="/signup"
+            >
+              Create new account
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="noAccount pt-3">
+        <h1 style="font-size: 15px">
+          How do become a leader in my community? How can I help myself
+          progress?<a routerLink="/about">learn more...</a>
+          стань сам себе психологом, от твоих усилий зависит твой успех!
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>

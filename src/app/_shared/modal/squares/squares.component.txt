@@ -1,0 +1,314 @@
+import { Cargo } from './../../../_services/user';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { TimerDisabledService } from 'src/app/_services/timer-disabled.service';
+import {
+  AngularFirestore,
+  AngularFirestoreDocument,
+} from '@angular/fire/compat/firestore';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import {
+  AngularFireDatabase,
+  AngularFireList,
+  AngularFireObject,
+} from '@angular/fire/compat/database';
+import { NetService } from './../../../_services/net.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+export interface Session {
+  setTime: string;
+}
+// export interface Cargo {
+//   code: string;
+//   sit: string;
+//   time: string;
+// }
+
+@Component({
+  selector: 'app-squares',
+  templateUrl: './squares.component.html',
+  styleUrls: ['./squares.component.scss'],
+})
+export class SquaresComponent implements OnInit {
+  @Output() close = new EventEmitter<void>();
+  cargo: Cargo = {} as Cargo;
+  studentRef: AngularFireObject<any>;
+  sqList = [
+    { id: 0, enable: true, color: 'sq-0' },
+    { id: 1, enable: true, color: 'sq-1' },
+    { id: 2, enable: true, color: 'sq-2' },
+    { id: 3, enable: true, color: 'sq-3' },
+    { id: 4, enable: true, color: 'sq-4' },
+    { id: 5, enable: true, color: 'sq-5' },
+    { id: 6, enable: true, color: 'sq-6' },
+    { id: 7, enable: true, color: 'sq-7' },
+    { id: 8, enable: true, color: 'sq-8' },
+  ];
+  squers = [];
+  indexes = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+  testResults: String = '';
+  leftColor = 9;
+  remainderColors = 8;
+  viewSq = true;
+  resArray: number[] = [];
+  userAuth: any;
+  UsrId: string;
+  ot: any;
+  ResultDB: any;
+  currentTimeInSeconds = Math.floor(Date.now());
+  // cloud function ih8ers
+  private url =
+    'https://us-central1-ipadress-59685.cloudfunctions.net/LocationData';
+  constructor(
+    private netService: NetService,
+    private db: AngularFireDatabase,
+    public appTimerDelayServices: TimerDisabledService,
+    private router: Router,
+    public afs: AngularFirestore,
+    public afAuth: AngularFireAuth,
+    private http: HttpClient
+  ) {
+    this.afAuth.authState.subscribe((user) => {
+      this.userAuth = user;
+      this.UsrId = this.userAuth.multiFactor.user.uid;
+      // console.log('пользователь FB ---> ', this.UsrId);
+    });
+  }
+
+  ngOnInit() {
+    var tT = Math.floor(Date.now());
+
+    localStorage.setItem('StT', tT.toString());
+    let count = this.indexes.length;
+    for (let i = count; i > 0; i--) {
+      let index = Math.floor(i * Math.random());
+      this.squers[count - i] = this.sqList[this.indexes[index]];
+      this.indexes.splice(index, 1);
+    }
+  }
+  results(item): void {
+    this.testResults += item.id;
+
+    item.color = 'sq-empty';
+    this.leftColor--;
+    this.remainderColors--;
+    item.enable = false;
+    let res: number[] = this.resArray;
+    res.push(item.id); //добавляем id цвета в массив
+    // console.log(res);
+    // this.appTimerDelayServices.removeButton();
+
+    // console.log('сгенерированный ', this.squers);
+    if (this.leftColor === 1) {
+      var lastSquare = this.squers.filter((user) => user.color !== 'sq-empty');
+      // console.log('остался последний квадрат', lastSquare);
+      var lastSq = lastSquare[0].id;
+      this.ot = lastSq.toString();
+      // console.log('---> ', ot);
+      // new solution
+      // this.netService
+      //   .getResult(this.ot)
+      //   .toPromise()
+      //   .then((result) => {
+      //     var probe = Object.values(result);
+      //     console.log('var probe: ', probe);
+      //   });
+      // end new solution
+      // let cargo = {
+      //   uid: this.UsrId,
+      //   code: this.testResults.concat(this.ot),
+      //   sit: localStorage.getItem('sit'),
+      //   time: Math.floor(Date.now()),
+      // };
+      // console.log('result: ', this.testResults.concat(this.ot));
+      // console.log('пользователь FB ---> ', this.UsrId);
+      this.debarkader();
+      // console.log('cargo', cargo);
+      // this.netService.getTest(cargo);
+      // this.appTimerDelayServices.removeButton();
+      this.appTimerDelayServices.testTimer();
+      // this.appTimerDelayServices.startTimer();
+      // const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+      //   `session/${this.UsrId}`
+      // );
+      // console.log('userId: ', this.UsrId);
+      // время с чего начинается отчет включения кнопки
+      // var currentTimeInSeconds = Math.floor(Date.now());
+      // localStorage.setItem('selTesec', this.currentTimeInSeconds.toString());
+      // this.setUserSession();
+      this.router.navigate(['']);
+    }
+    // if (this.testResults.length >= this.sqList.length) {
+    //   console.log(this.testResults);
+    //   this.appTimerDelayServices.removeButton();
+    //   this.viewSq = false;
+    //   var currentTimeInSeconds = Math.floor(Date.now());
+    //   localStorage.setItem('selTesec', currentTimeInSeconds.toString());
+    //   var St_tmp = localStorage.getItem('StT');
+    //   var SresT: number = +St_tmp;
+    //   var t_tmp = localStorage.getItem('selTesec');
+    //   var resT: number = +t_tmp;
+
+    //   var resChange = (resT - SresT) / 1000;
+    //   var selSitms; //время выбора в секундах ситуации
+    //   localStorage.setItem('resTesec', resChange.toString());
+    //   this.router.navigate(['']);
+    //   // это массив, который генерится. нужно показать оставшийся цвет
+    //   console.log('---> ', this.squers);
+    // }
+    // console.log(this.remainderColors);
+  }
+  // setUserSession() {
+  //   const sesionRef: AngularFirestoreDocument<any> = this.afs.doc(
+  //     `session/${this.UsrId}/`
+  //   );
+  //   var currentTimeInSeconds =
+
+  //   sessionStorage.setItem('LastTime', currentTimeInSeconds.toString());
+  //   const sesRef = {
+  //     lastSession: currentTimeInSeconds,
+  //     // testStringOne: 'One',
+  //   };
+  //   return sesionRef.set(sesRef, {
+  //     merge: true,
+  //   });
+  // }
+  debarkader() {
+    this.db.database
+      .ref('data/' + this.testResults.concat(this.ot))
+      .once('value', (snapshot) => {
+        this.ResultDB = snapshot.val();
+        // original   response.send(snapshot.val());
+        // this.cargo.code = this.testResults.concat(this.ot);
+        // this.cargo.sit = localStorage.getItem('sit');
+        // this.cargo.time = Math.floor(Date.now());
+        // this.cargo.ENemoState = this.ResultDB.ENemoState;
+        // this.cargo.emoScape = this.ResultDB.emoScape;
+        // this.cargo.gr59 = this.ResultDB.gr59;
+        localStorage.setItem('code', this.testResults.concat(this.ot));
+        localStorage.setItem('time', Math.floor(Date.now()).toString());
+        localStorage.setItem('ENemoState', this.ResultDB.ENemoState);
+        localStorage.setItem('emoScape', this.ResultDB.emoScape);
+        localStorage.setItem('gr59', this.ResultDB.gr59);
+        //выводим результат
+        // console.log('this.ResultDB', this.ResultDB);
+        // console.log('this.cargo', this.cargo);
+      });
+    // определение геопозиции
+    this.http.get(this.url).subscribe((res: any) => {
+      localStorage.setItem('country', res.country);
+      localStorage.setItem('city', res.city);
+      localStorage.setItem('cityLatLong', res.cityLatLong);
+      localStorage.setItem('userIP', res.userIP);
+      // console.log('my geoposition --->', res);
+      //weather
+      this.http
+        .get(
+          'https://api.openweathermap.org/data/2.5/weather?q=' +
+            this.cargo.city +
+            '&units=metric&APPID=e0548dcd61a598fb8960505292e377a1'
+        )
+        .subscribe((result: any) => {
+          //  this.nameCity = result.name;
+          //  this.weather = result.weather[0].main;
+          this.cargo.feellike = result.main.feels_like.toString();
+          //  this.temperature = result.main.temp;
+          console.log('result.main.feels_like ', result.main.feels_like);
+          localStorage.setItem(
+            'weather_description',
+            result.weather[0].description
+          );
+          localStorage.setItem('wind_speed', result.wind.speed);
+          localStorage.setItem('countryCode', res.countryCode);
+          localStorage.setItem('country', res.country);
+          localStorage.setItem('regionName', res.regionName);
+          localStorage.setItem('city', result.name);
+          localStorage.setItem('timezone', res.timezone);
+          localStorage.setItem('longlat', res.cityLatLong);
+          localStorage.setItem('lon', res.lon);
+          localStorage.setItem('temp', result.main.temp);
+          localStorage.setItem('temp_feels_like', result.main.feels_like);
+          localStorage.setItem('pressure', result.main.pressure);
+          localStorage.setItem('humidity', result.main.humidity);
+          localStorage.setItem('weather_main', result.weather[0].main);
+          localStorage.setItem(
+            'weather_description',
+            result.weather[0].description
+          );
+          localStorage.setItem('wind_speed', result.wind.speed);
+          this.db.database
+            .ref(`sit/${this.UsrId}/${this.currentTimeInSeconds}`)
+            // .set('testingPush:' + this.currentTimeInSeconds);
+            .set(this.cargo);
+          console.log('result all cargo --->', this.cargo);
+        });
+      //end weather
+    });
+    // конец определении геопозиции
+    // this.db.database
+    //   .ref(`situations/${this.UsrId}/${this.currentTimeInSeconds}`)
+    //   .set('testingPush:' + this.currentTimeInSeconds);
+    // this.http
+    //   .put(
+    //     `https://alfauser-4acb5-default-rtdb.firebaseio.com/situations/${this.UsrId}/${this.currentTimeInSeconds}.json`,
+    //     this.cargo
+    //   )
+    //   .subscribe((response) => {
+    //     // this.router.navigate(['/home']);
+    //     console.log('write db ---> ', this.cargo);
+    //     console.log('subs response: ', response);
+    //   });
+    // console.log(
+    //   'Результат ---> ',
+
+    //   this.cargo
+    // );
+  }
+  debarkader_old() {
+    this.cargo.code = this.testResults.concat(this.ot);
+    this.cargo.sit = localStorage.getItem('sit');
+    var currentTime = Math.floor(Date.now());
+    this.cargo.time = currentTime;
+    console.log('Cargo до --->', JSON.stringify(this.cargo));
+    //
+    this.db.database
+      .ref('data/' + this.testResults.concat(this.ot))
+      .once('value', (snapshot) => {
+        this.ResultDB = snapshot.val();
+        // original   response.send(snapshot.val());
+        this.cargo.ENemoState = this.ResultDB.ENemoState;
+        this.cargo.emoScape = this.ResultDB.emoScape;
+        this.cargo.gr59 = this.ResultDB.gr59;
+        //выводим результат
+        // console.log(this.ResultDB.ENemoState);
+        // this.afs
+        //   .collection('situations')
+        //   .doc(this.UsrId)
+        //   .collection(this.cargo.sit)
+        //   .doc(this.cargo.time.toString())
+        //   .set(this.cargo);
+
+        // this.afs.doc('/users/' + result.user.uid).set(user);
+      });
+    // write last session
+    const sesionRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `session/${this.UsrId}/`
+    );
+    // var currentTimeInSeconds = Math.floor(Date.now());
+    // sessionStorage.setItem('LastTime', currentTimeInSeconds.toString());
+    const sesRef = {
+      lastSession: this.cargo.time.toString(),
+      // testStringOne: 'One',
+    };
+    return sesionRef.set(sesRef, {
+      merge: true,
+    });
+    // this.cargo.ENemoState = this.ResultDB.ENemoState;
+    // this.cargo.emoScape = this.ResultDB.emoScape;
+    // this.cargo.gr59 = this.ResultDB.gr59;
+    console.log('Cargo после --->', JSON.stringify(this.cargo));
+    // console.log('общий рез-т: ', this.ResultDB);
+    //
+  }
+}

@@ -1,0 +1,18 @@
+<div class="a-card-content pb-2">
+  <div (click)="goToUserProfile()" class="a-button p-2">
+    <img
+      [src]="user.imageURL"
+      class="user-avatar"
+      alt="{{ user.fullName }} {{ user.preferredName }}"
+    />
+    <span class="p-2" *ngIf="!user.fullName">my profile</span>
+    <span class="p-2" *ngIf="user.fullName">{{ user.fullName }}</span>
+  </div>
+
+  <hr style="margin: 0%" />
+  <p class="p-3">
+    <a routerLink="/about/privacy">Privacy Policy </a>
+    <span> & </span>
+    <a routerLink="/about/terms">Terms of Use</a>
+  </p>
+</div>
