@@ -45,3 +45,12 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# firebase
+/firebase-debug.log
+/pubsub-debug.log
+/ui-debug.log
+/database-debug.log
+/functions
+/.github
+/.firebase
