@@ -87,17 +87,17 @@
               class="form-control"
               [ngClass]="{
                 'is-valid':
-                  loginForm.get('email').touched &&
-                  loginForm.get('email').valid,
+                  loginForm.get('email')?.touched &&
+                  loginForm.get('email')?.valid,
                 'is-invalid':
-                  loginForm.get('email').touched &&
-                  loginForm.get('email').invalid
+                  loginForm.get('email')?.touched &&
+                  loginForm.get('email')?.invalid
               }"
             />
             <!-- <pre>{{ signupForm.get("email").valid | json }}</pre> -->
             <div
               *ngIf="
-                loginForm.get('email').invalid && loginForm.get('email').touched
+                loginForm.get('email')?.invalid && loginForm.get('email')?.touched
               "
             >
               <div class="invalid-feedback d-block">
@@ -109,7 +109,7 @@
             </div>
             <div
               *ngIf="
-                loginForm.get('email').valid && loginForm.get('email').touched
+                loginForm.get('email')?.valid && loginForm.get('email')?.touched
               "
             >
               <!-- <div class="valid-feedback d-block" style="color: green">
@@ -132,32 +132,32 @@
               class="form-control"
               [ngClass]="{
                 'is-valid':
-                  loginForm.get('password').touched &&
-                  loginForm.get('password').valid,
+                  loginForm.get('password')?.touched &&
+                  loginForm.get('password')?.valid,
                 'is-invalid':
-                  loginForm.get('password').touched &&
-                  loginForm.get('password').invalid
+                  loginForm.get('password')?.touched &&
+                  loginForm.get('password')?.invalid
               }"
             />
             <!-- <pre>{{ signupForm.get("password").valid | json }}</pre> -->
             <div
               *ngIf="
-                loginForm.get('password').invalid &&
-                loginForm.get('password').touched
+                loginForm.get('password')?.invalid &&
+                loginForm.get('password')?.touched
               "
             >
               <div class="invalid-feedback d-block" style="color: #d43f3a">
-                <p *ngIf="loginForm.get('password').errors?.['required']">
+                <p *ngIf="loginForm.get('password')?.errors?.['required']">
                   <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                   The field must not be empty
                 </p>
 
-                <small *ngIf="loginForm.get('password').errors?.['minlength']">
+                <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
                   <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                   Password must be at least
-                  {{ loginForm.get("password").errors?.['minlength']?.['requiredLength'] }}
+                  {{ loginForm.get("password")?.errors?.['minlength']?.['requiredLength'] }}
                   characters. Сurrent number of characters
-                  {{ loginForm.get("password").errors?.['minlength']?.['actualLength'] }}
+                  {{ loginForm.get("password")?.errors?.['minlength']?.['actualLength'] }}
                 </small>
               </div>
             </div>

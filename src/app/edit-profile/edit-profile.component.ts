@@ -34,7 +34,7 @@ export class EditProfileComponent implements OnInit {
   role!: string;
   roleSelected!: string;
   aliasUrl!: string;
-  lastSession: string;
+  lastSession!: string;
   created_at: any = {};
   constructor(
     private angularFireStorage: AngularFireStorage,

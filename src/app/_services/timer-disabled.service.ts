@@ -12,18 +12,18 @@ export class TimerDisabledService {
   check = sessionStorage.getItem('button');
   now_time = new Date().getTime();
   add_time = localStorage.setItem('addTime', new Date().getTime().toString());
-  session_time = localStorage.getItem('addTime');
+  session_time: any = localStorage.getItem('addTime');
   end_time = new Date().getTime() + 10000;
   // mls_time = 60 * 1.5 * 1000;
   mls_time = 10000;
-  res_time: number;
+  res_time!: number;
   time: number;
-  timeS: number;
+  timeS!: number;
 
-  timer$: Observable<number>;
-  timerSub: Subscription;
+  timer$!: Observable<number>;
+  timerSub!: Subscription;
   // set_interval = now;
-  time$;
+  time$: any;
   constructor() {
     this.time = Math.ceil(
       (this.now_time + this.mls_time - +this.session_time) / 1000

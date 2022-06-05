@@ -30,6 +30,8 @@ export class LeftSidebarComponent implements OnInit {
   }
   getUser() {
     this.user.aliasUrl = this.route.snapshot.params['id'];
+    console.log(this.user.aliasUrl);
+     this.user.aliasUrl
     this.angularFireAuth.onAuthStateChanged((user: any) => {
       this.angularFirestore
         .collection('users')

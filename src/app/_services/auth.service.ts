@@ -18,7 +18,7 @@ export class AuthService {
   userRole!: string;
   currentUser!: any;
   role!: string;
-  emailVerified: boolean;
+  emailVerified!: boolean;
   registerDate = Date.now();
   loggedIn: boolean = false;
   constructor(

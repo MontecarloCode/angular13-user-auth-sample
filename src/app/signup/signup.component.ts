@@ -17,7 +17,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 })
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
-  firebaseErrorMessage: string;
+  firebaseErrorMessage!: string;
   user!: User;
   constructor(
     private router: Router,

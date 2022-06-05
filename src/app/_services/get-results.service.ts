@@ -13,11 +13,11 @@ import { map, Observable, of } from 'rxjs';
 export class GetResultsService {
   cargo: Cargo = {} as Cargo;
   user: User = {} as User;
-  UsrId: string;
-  emotion: string;
+  UsrId!: string;
+  emotion!: string;
   public isLoading$: Observable<Boolean> = of(false);
-  public data$: Observable<any>;
-  public error$: Observable<any>;
+  public data$!: Observable<any>;
+  public error$!: Observable<any>;
 
   constructor(private db: AngularFireDatabase, public afAuth: AngularFireAuth) {
     this.afAuth.currentUser.then((usr: any) => {

@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 })
 export class SigninComponent implements OnInit {
   loginForm: FormGroup;
-  firebaseErrorMessage: string;
+  firebaseErrorMessage!: string;
 
   constructor(
     private router: Router,

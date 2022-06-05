@@ -1,4 +1,4 @@
-import { Component, Injectable, OnInit, OnDestroy } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { TimerDisabledService } from '../_services/timer-disabled.service';
 import { AuthService } from '../_services/auth.service';
 import { Subscription, Observable } from 'rxjs';
@@ -25,9 +25,9 @@ export class NavComponent {
   check = sessionStorage.getItem('button');
   bthIsView = true;
   user: User = {} as User;
-  lstTimeIn: string;
-  lstTimeCons: string;
-  countTime: number;
+  lstTimeIn!: string;
+  lstTimeCons!: string;
+  countTime!: number;
   constructor(
     private router: Router,
     public appTimerDelayServices: TimerDisabledService,

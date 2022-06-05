@@ -8,12 +8,12 @@
 export interface User {
   uid: string;
   email: string;
-  imageURL: string;
+  imageURL: string | null;
   password: string;
   created_at: string;
-  nickName: string;
-  fullName: string;
-  preferredName: string;
+  nickName: string | null;
+  fullName: string | null;
+  preferredName: string | null;
 
   // phoneNumber?: number;
   // роли пользователя: любопытный, пользователь, лидер, альфа

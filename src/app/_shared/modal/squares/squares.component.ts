@@ -39,7 +39,7 @@ export class SquaresComponent implements OnInit {
     { id: 7, enable: true, color: 'sq-7' },
     { id: 8, enable: true, color: 'sq-8' },
   ];
-  squers = [];
+  squers: any[] = [];
   indexes = [0, 1, 2, 3, 4, 5, 6, 7, 8];
   testResults: String = '';
   leftColor = 9;
@@ -47,10 +47,10 @@ export class SquaresComponent implements OnInit {
   viewSq = true;
   resArray: number[] = [];
   userAuth: any;
-  UsrId: string;
+  UsrId!: string;
   ot: any;
   ResultDB: any;
-  tT: number;
+  tT!: number;
 
   // cloud function ih8ers
   // private url =
@@ -81,7 +81,7 @@ export class SquaresComponent implements OnInit {
       this.indexes.splice(index, 1);
     }
   }
-  results(item): void {
+  results(item: any): void {
     this.testResults += item.id;
 
     item.color = 'sq-empty';
@@ -92,23 +92,24 @@ export class SquaresComponent implements OnInit {
     res.push(item.id); //добавляем id цвета в массив
 
     if (this.leftColor === 1) {
-      var lastSquare = this.squers.filter((user) => user.color !== 'sq-empty');
+      let lastSquare = this.squers.filter((user) => user.color !== 'sq-empty');
 
-      var lastSq = lastSquare[0].id;
+      let lastSq = lastSquare[0].id;
       this.ot = lastSq.toString();
 
       this.appTimerDelayServices.testTimer();
 
       this.tT = Math.floor(Date.now());
       // время с чего начинается отчет включения кнопки
-      var currentTimeInSeconds = Math.floor(Date.now());
+      let currentTimeInSeconds = Math.floor(Date.now());
 
       this.setUserSession();
-      var t_tmp = localStorage.getItem('selTesec');
-      var resT: number = +t_tmp;
-      var resChange = (currentTimeInSeconds - resT) / 1000;
-      localStorage.setItem('rapidAssessment', resChange.toString());
-
+      let t_tmp = localStorage.getItem('selTesec');
+      if(t_tmp){
+        let resT: number = +t_tmp;
+        let resChange = (currentTimeInSeconds - resT) / 1000;
+        localStorage.setItem('rapidAssessment', resChange.toString());
+      }
       this.router.navigate(['']);
     }
   }

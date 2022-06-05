@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 })
 export class ForgotPasswordComponent implements OnInit {
   forgot_passForm: FormGroup;
-  firebaseErrorMessage: string;
+  firebaseErrorMessage!: string;
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,

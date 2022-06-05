@@ -1,9 +1,8 @@
 <div class="a-card-content pb-2">
   <div (click)="goToUserProfile()" class="a-button p-2">
-    <img
+    <img 
       [src]="user.imageURL"
       class="user-avatar"
-      alt="{{ user.fullName }} {{ user.preferredName }}"
     />
     <span class="p-2" *ngIf="!user.fullName">my profile</span>
     <span class="p-2" *ngIf="user.fullName">{{ user.fullName }}</span>
